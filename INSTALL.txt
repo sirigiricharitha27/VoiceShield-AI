@@ -1,0 +1,51 @@
+VOICESHIELD AI — INSTALLATION (WINDOWS)
+
+Requirements
+- Python 3.10 or newer
+- Node.js 18 or newer
+- npm
+
+1. Backend setup
+Open PowerShell in the VoiceShield_AI folder and run:
+
+  cd backend
+  python -m venv .venv
+  .\.venv\Scripts\Activate.ps1
+  pip install -r requirements.txt
+  Copy-Item .env.example .env
+
+Edit backend\.env locally:
+- Set a long random FLASK_SECRET_KEY.
+- Add GROQ_API_KEY and GROQ_MODEL for fraud analysis.
+- Add GNANI_API_KEY and GNANI_PRISMA_URL from your Gnani AI console.
+- Keep credentials private. Never commit backend\.env.
+
+Start the backend from the backend folder:
+
+  python app.py
+
+Backend address: http://127.0.0.1:5000
+
+2. Frontend setup
+Open a second PowerShell window in the VoiceShield_AI folder:
+
+  cd frontend
+  npm install
+  npm run dev
+
+Open the local URL printed by Vite (usually http://localhost:5173).
+
+3. Demo and provider notes
+- Gnani Prisma v3.0 is the speech-to-text integration.
+- Groq is used for the current fraud-analysis LLM workflow.
+- Evon is not integrated in this version.
+- Timbre text-to-speech is not integrated; the UI control is a placeholder.
+- The application is a prototype. Use fictional incidents and staged audio only.
+- PDF complaint drafts are generated in English. The original transcript remains in the application.
+- Review all extracted facts, evidence quotations and recommendations before using a draft.
+
+4. Files and privacy
+Runtime database and uploaded files are created locally and are excluded from this source ZIP.
+Do not upload .env files, API keys, real incident data, recordings, evidence, or generated reports to GitHub.
+
+For more details, see README.md and docs/.
